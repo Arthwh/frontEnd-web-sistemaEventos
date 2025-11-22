@@ -1,0 +1,200 @@
+/* Variáveis de Cores (Opcional, mas útil para manutenção) */
+:root {
+    --bg-dark: #181818;
+    --bg-card: #1c1c1c;
+    --text-light: #e0e0e0;
+    --color-primary: #007bff;
+    --color-accent: #00a884;
+    --border-subtle: #4444;
+    --text-substitle: #888888;
+    --color-danger: rgb(161, 1, 1);
+}
+
+html, body, #root {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex; 
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light); 
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* --- Cards de Eventos --- */
+.card-modern {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    box-shadow: 
+        0 4px 10px rgba(0, 0, 0, 0.4), 
+        0 12px 25px rgba(0, 0, 0, 0.7); 
+    
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.card-modern-hover:hover {
+    box-shadow: 
+        0 6px 12px rgba(0, 0, 0, 0.5),
+        0 18px 35px rgba(0, 0, 0, 0.8),
+        0 0 25px rgba(0, 78, 255, 0.3);
+    transform: translateY(-4px);
+}
+
+h1, .card-modern{
+    color: var(--text-light);
+}
+
+.title {
+    color: var(--text-light);
+}
+
+.subtitle{
+    color: var(--text-substitle);
+}
+
+.dropdownItem{
+    color: var(--text-light);
+    background-color: var(--bg-card);
+}
+
+.dropdownItem:hover{
+    background-color: var(--bg-dark);
+    color: var(--color-accent);
+}
+
+.dropdownItem:active{
+    background-color: var(--bg-dark);
+    color: var(--color-accent);
+}
+
+/* --- Campos de Formulário e Busca --- */
+.form-control-modern {
+    background-color: #2b2b2b;
+    color: var(--text-light);
+    border: 1px solid var(--border-subtle); 
+    border-radius: 8px; 
+}
+
+.form-control-modern::placeholder {
+    color: #888;
+}
+
+.form-control-modern:focus {
+    background-color: #3a3a3a;
+    border-color: var(--color-primary); 
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.4); 
+    color: var(--text-light);
+    outline: none;
+}
+
+/* Estilo para o InputGroup.Text (o ícone de lupa) */
+.input-group-modern-prepend {
+    background-color: #2b2b2b;
+    border-right: none;
+    border-color: var(--border-subtle);
+    border-radius: 8px 0 0 8px;
+    display: flex;
+    align-items: center;
+    padding: 0.375rem 0.75rem;
+}
+
+/* O input em si, complementando o Group.Text */
+.input-group-modern-control {
+    border-left: none;
+    border-radius: 0 8px 8px 0;
+}
+
+
+/* --- Botões de Ação (Modernos e com Sombra) --- */
+.btn-modern {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+.btn-modern:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    box-shadow: 0 8px 15px rgba(0, 123, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Botão de Destaque (Verde) */
+.btn-accent {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 10px rgba(0, 168, 132, 0.3);
+}
+
+.btn-accent:hover, .btn-accent:focus, .btn-access:active{
+    background-color: #adc9c3;
+    border-color: #008f71;
+    box-shadow: 0 8px 15px rgba(0, 168, 132, 0.4);
+}
+
+/* Botão Outline para detalhes (Dark Mode) */
+.btn-outline-dark-accent, .navbar-modern .nav-link:hover{
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    background-color: transparent;
+}
+
+.btn-outline-dark-accent:hover {
+    color: var(--bg-dark);
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.btn-outline-dark-danger{
+    color: var(--color-danger);
+    border-color: var(--color-danger);
+    background-color: transparent;
+}
+
+.btn-outline-dark-danger:hover {
+    color: var(--bg-dark);
+    background-color: var(--color-danger);
+    border-color: var(--color-danger);
+}
+
+/* --- Alertas de Status --- */
+.alert-dark-variant {
+    background-color: #343a40;
+    color: var(--text-light);
+    border-color: #495057;
+    border-radius: 8px;
+}
+
+/* --- Estilo para a Navbar --- */
+.navbar-modern {
+    background-color: #1c1c1c;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+
+}
+
+/* Links dentro da Navbar (Brand e Nav.Link) */
+.navbar-modern .navbar-brand,
+.navbar-modern .nav-link {
+    color: #e0e0e0;
+    transition: color 0.2s ease-in-out;
+    border-radius: 4px;
+
+}
+
+.form-field-label{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    color: var(--text-light);
+}
