@@ -92,11 +92,13 @@ const UserEventsListPage: React.FC = () => {
     const handleGenerateCertificate = async (registration: Registration) => {
         setProcessingId(registration.id);
         try {
-            await RegistrationService.downloadCertificate(registration.id);
+            const certificate = await RegistrationService.getCertificateByRegistration(registration.id);
+
+            await RegistrationService.downloadCertificate(certificate.authenticationCode);
             setToastInfo({ show: true, msg: 'Certificado baixado com sucesso!', variant: 'success' });
         } catch (err) {
             console.error(err);
-            const errorMsg = err.response?.data?.message || 'Erro ao baixar certificado.';
+            const errorMsg = err.data?.message || 'Erro ao baixar certificado.';
             setToastInfo({ show: true, msg: errorMsg, variant: 'danger' });
         } finally {
             setProcessingId(null);

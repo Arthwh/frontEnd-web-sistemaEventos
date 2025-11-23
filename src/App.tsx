@@ -7,6 +7,7 @@ import RegisterPage from './pages/registerPage';
 import EventsListPage from './pages/EventsListPage';
 import UserProfilePage from './pages/UserProfilePage';
 import UserEventsListPage from './pages/UserEventsListPage';
+import VerifyCertificatePage from './pages/VerifyCertificatePage';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -28,6 +29,7 @@ function App() {
               <Route path="/register" element={<RegisterPage />} />
             </Route>
             <Route path="/" element={<HomePage />} />
+            <Route path="/certificates/verify" element={<VerifyCertificatePage />} />
 
             {/* --- ROTAS PRIVADAS --- */}
             {/* Tudo que estiver dentro deste Route será protegido */}

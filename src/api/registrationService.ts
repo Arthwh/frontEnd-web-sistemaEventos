@@ -1,5 +1,6 @@
 import api from './axios';
 import type { Registration } from '../types/registration'
+import type { Certificate } from '../types/certificate';
 
 const RegistrationService = {
   getMyRegistrations: async (): Promise<Registration[]> => {
@@ -17,8 +18,18 @@ const RegistrationService = {
     return response.data;
   },
 
-  downloadCertificate: async (eventId: string): Promise<void> => {
-    const response = await api.get(`/registrations/${eventId}/certificate`, {
+  getCertificateByRegistration: async (registrationId: string): Promise<Certificate> => {
+    const response = await api.get(`/api/certificates/${registrationId}`);
+    return response.data;
+  },
+
+  getCertificateByAuthenticationCode: async (authenticationCode: string): Promise<Certificate> => {
+    const response = await api.get(`/api/certificates/verify/${authenticationCode}`);
+    return response.data;
+  },
+
+  downloadCertificate: async (authenticationCode: string): Promise<void> => {
+    const response = await api.get(`/api/certificates/download/${authenticationCode}`, {
       responseType: 'blob' // Importante para baixar arquivos
     });
 
@@ -26,7 +37,7 @@ const RegistrationService = {
     const url = window.URL.createObjectURL(new Blob([response.data]));
     const link = document.createElement('a');
     link.href = url;
-    link.setAttribute('download', `certificado_${eventId}.pdf`);
+    link.setAttribute('download', `certificado_${authenticationCode}.pdf`);
     document.body.appendChild(link);
     link.click();
     link.remove();

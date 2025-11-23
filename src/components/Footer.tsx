@@ -10,14 +10,9 @@ const Footer: React.FC = () => {
                     &copy; {new Date().getFullYear()} Sistema de Eventos. Todos os direitos reservados.
                 </p>
 
-                {/* Links de Política (Opcional, mas bom para simetria) */}
                 <div className="small">
-                    <Link to="/privacy" className="text-modern-link mx-2">
-                        Política de Privacidade
-                    </Link>
-                    |
-                    <Link to="/terms" className="text-modern-link mx-2">
-                        Termos de Serviço
+                    <Link to="/certificates/verify" className="text-modern-link mx-2">
+                        Verificar Autenticidade
                     </Link>
                 </div>
             </Container>
