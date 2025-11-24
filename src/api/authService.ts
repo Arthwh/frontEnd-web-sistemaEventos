@@ -26,6 +26,19 @@ const AuthService = {
   isAuthenticated: () => {
     return !!localStorage.getItem('token');
   },
+
+  requestPasswordRecovery: async (email: string) => {
+    await api.post('/auth/password-recovery', { email });
+  },
+
+  validateRecoveryCode: async (email: string, code: string): Promise<string> => {
+    const response = await api.post('/auth/validate-recovery-code', { email, code });
+    return response.data;
+  },
+
+  resetPassword: async (email: string, token: string, newPassword: string) => {
+    await api.post('/auth/reset-password', { email, token, newPassword })
+  }
 };
 
 export default AuthService;

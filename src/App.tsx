@@ -8,6 +8,7 @@ import EventsListPage from './pages/EventsListPage';
 import UserProfilePage from './pages/UserProfilePage';
 import UserEventsListPage from './pages/UserEventsListPage';
 import VerifyCertificatePage from './pages/VerifyCertificatePage';
+import PasswordRecoveryPage from './pages/PasswordRecoveryPage';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -27,6 +28,7 @@ function App() {
             <Route element={<PublicRoute />}>
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
+              <Route path="/password-recovery" element={<PasswordRecoveryPage />} />
             </Route>
             <Route path="/" element={<HomePage />} />
             <Route path="/certificates/verify" element={<VerifyCertificatePage />} />
