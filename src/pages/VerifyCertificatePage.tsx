@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Card, Form, Button, Alert, Spinner } from 'react-bootstrap';
+import { Container, Row, Col, Card, Form, Button, Spinner } from 'react-bootstrap';
 import ToastNotification from '../components/ToastNotification';
 import type { Certificate } from '../types/certificate';
 import RegistrationService from '../api/registrationService';
@@ -25,7 +25,7 @@ const VerifyCertificatePage: React.FC = () => {
             const certificate = await RegistrationService.getCertificateByAuthenticationCode(code)
 
             setCertificate(certificate);
-        } catch (err) {
+        } catch {
             setToastInfo({ show: true, msg: 'Não foi possível verificar este certificado. Confira o código e tente novamente.', variant: 'danger' });
         } finally {
             setLoading(false);
@@ -35,11 +35,11 @@ const VerifyCertificatePage: React.FC = () => {
     const handleDownload = async () => {
         setProcessingDownload(true)
         try {
-            await RegistrationService.downloadCertificate(certificate?.authenticationCode);
+            await RegistrationService.downloadCertificate(certificate!.authenticationCode);
             setToastInfo({ show: true, msg: 'Certificado baixado com sucesso!', variant: 'success' });
         } catch (err) {
             console.error(err);
-            const errorMsg = err.data?.message || 'Erro ao baixar certificado.';
+            const errorMsg = err.data.message || 'Erro ao baixar certificado.';
             setToastInfo({ show: true, msg: errorMsg, variant: 'danger' });
         } finally {
             setProcessingDownload(false)

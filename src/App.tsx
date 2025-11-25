@@ -2,8 +2,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 
 import HomePage from './pages/HomePage';
-import LoginPage from './pages/loginPage';
-import RegisterPage from './pages/registerPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 import EventsListPage from './pages/EventsListPage';
 import UserProfilePage from './pages/UserProfilePage';
 import UserEventsListPage from './pages/UserEventsListPage';
