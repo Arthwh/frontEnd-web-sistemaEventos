@@ -60,11 +60,10 @@ const UserProfilePage: React.FC = () => {
         }
     };
 
-    // --- HELPERS DE FORMATAÇÃO ---
     const formatDate = (dateString?: string) => {
         if (!dateString) return '-';
-        return new Date(dateString).toLocaleDateString('pt-BR');
-    };
+        return new Date(dateString).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+    }
 
     const formatDateTime = (dateString?: string) => {
         if (!dateString) return '-';
@@ -127,7 +126,7 @@ const UserProfilePage: React.FC = () => {
                                                         {formatRoleName(role.name)}
                                                     </Badge>
                                                 ))}
-                                                {user?.complete && <Badge bg="success" className="px-3 py-2">Cadastro Completo</Badge>}
+                                                {user?.complete ? <Badge bg="success" className="px-3 py-2">Cadastro Completo</Badge> : <Badge bg="error" className="px-3 py-2">Cadastro Incompleto</Badge>}
                                             </div>
                                         </div>
 

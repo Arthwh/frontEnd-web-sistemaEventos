@@ -7,7 +7,6 @@ interface ToastNotificationProps {
     message: string;
     variant?: 'success' | 'danger' | 'warning' | 'info';
     title?: string;
-    position?: 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start';
 }
 
 const ToastNotification: React.FC<ToastNotificationProps> = ({
@@ -15,11 +14,14 @@ const ToastNotification: React.FC<ToastNotificationProps> = ({
     onClose,
     message,
     variant = 'success',
-    title,
-    position = 'bottom-end'
+    title
 }) => {
     return (
-        <ToastContainer className="p-3" position={position} style={{ zIndex: 9999 }}>
+        <ToastContainer
+            className="p-3 position-fixed bottom-0 end-0"
+            style={{ zIndex: 9999 }}
+            position="bottom-end"
+        >
             <Toast
                 onClose={onClose}
                 show={show}
