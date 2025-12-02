@@ -54,6 +54,24 @@ const UserEventsListPage: React.FC = () => {
                     }
                 }));
 
+                combinedData.sort((a, b) => {
+                    const getPriority = (item: RegistrationWithEvent) => {
+                        if (item.status === 'CANCELED') return 2;
+                        if (item.checkIn) return 1;
+                        return 0;
+                    };
+                    const p1 = getPriority(a);
+                    const p2 = getPriority(b);
+                    // Se as prioridades forem diferentes, ordena pelo peso
+                    if (p1 !== p2) {
+                        return p1 - p2;
+                    }
+
+                    const dateA = new Date(a.eventDetails?.eventDate || 0).getTime();
+                    const dateB = new Date(b.eventDetails?.eventDate || 0).getTime();
+                    return dateA - dateB;
+                });
+
                 setRegistrations(combinedData);
             } catch (err) {
                 console.error(err);
